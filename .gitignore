@@ -1,0 +1,5 @@
+# Data files
+*.txt
+
+# Test plots
+*.png
