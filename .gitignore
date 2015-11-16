@@ -3,3 +3,6 @@
 
 # Test plots
 *.png
+
+# Compiled Files
+*.pyc
