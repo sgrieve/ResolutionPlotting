@@ -42,7 +42,7 @@ def CreatePlots():
                            CurvData[5], CurvData[6], CurvData[0])
 
         plt.xlabel("Grid resolution ($m$)")
-        plt.ylabel("Hillslope length $m$")
+        plt.ylabel("Hillslope length ($m$)")
         plt.title(h1 + ' hillslope length')
         plt.savefig(p + '_LH.png')
         plt.clf()
