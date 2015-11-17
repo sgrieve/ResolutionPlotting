@@ -37,9 +37,9 @@ def CreatePlots():
     Path = ''
 
     for p, h1 in zip(prefixes, headings1):
-        CurvData = LoadData(p, Path)
-        BoxPlotter.BoxPlot(CurvData[1], CurvData[2], CurvData[3], CurvData[4],
-                           CurvData[5], CurvData[6], CurvData[0])
+        LHData = LoadData(p, Path)
+        BoxPlotter.BoxPlot(LHData[1], LHData[2], LHData[3], LHData[4],
+                           LHData[5], LHData[6], LHData[0])
 
         plt.xlabel("Grid resolution ($m$)")
         plt.ylabel("Hillslope length ($m$)")
