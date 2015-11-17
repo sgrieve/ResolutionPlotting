@@ -36,6 +36,7 @@ def CreatePlots():
 
     prefixes = ['SC', 'OR', 'GM']
     types = range(3, 7)
+    Path = ''
 
     headings1 = ['Santa Cruz Island', 'Oregon Coast Range', 'Gabilan Mesa']
     headings2 = ['Total Curvature', 'Planform Curvature', 'Profile Curvature',
@@ -43,7 +44,7 @@ def CreatePlots():
 
     for p, h1 in zip(prefixes, headings1):
         for t, h2 in zip(types, headings2):
-            CurvData = LoadData(p, t, '')
+            CurvData = LoadData(p, t, Path)
             BoxPlotter.BoxPlot(CurvData[1], CurvData[2], CurvData[3],
                                CurvData[4], CurvData[5], CurvData[6],
                                CurvData[0])
@@ -53,3 +54,5 @@ def CreatePlots():
             plt.title(h1 + ' ' + h2)
             plt.savefig(p + '_Curv_' + str(t) + '.png')
             plt.clf()
+
+CreatePlots()
