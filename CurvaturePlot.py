@@ -29,12 +29,27 @@ def LoadData(Prefix, CurvType, InPath):
     return Data
 
 
-CurvatureData = LoadData('GM', 3, '')
-BoxPlotter.BoxPlot(CurvatureData[1], CurvatureData[2], CurvatureData[3],
-                   CurvatureData[4], CurvatureData[5], CurvatureData[6],
-                   CurvatureData[0])
+def CreatePlots():
+    """
+    Wrapper to generate curvature plots from a series of data files.
+    """
 
-plt.xlabel("Grid resolution ($m$)")
-plt.ylabel("Curvature $m^{-1}$")
+    prefixes = ['SC', 'OR', 'GM']
+    types = range(3, 7)
 
-plt.show()
+    headings1 = ['Santa Cruz Island', 'Oregon Coast Range', 'Gabilan Mesa']
+    headings2 = ['Total Curvature', 'Planform Curvature', 'Profile Curvature',
+                 'Tan Curvature']
+
+    for p, h1 in zip(prefixes, headings1):
+        for t, h2 in zip(types, headings2):
+            CurvData = LoadData(p, t, '')
+            BoxPlotter.BoxPlot(CurvData[1], CurvData[2], CurvData[3],
+                               CurvData[4], CurvData[5], CurvData[6],
+                               CurvData[0])
+
+            plt.xlabel("Grid resolution ($m$)")
+            plt.ylabel("Curvature $m^{-1}$")
+            plt.title(h1 + ' ' + h2)
+            plt.savefig(p + '_Curv_' + str(t) + '.png')
+            plt.clf()
