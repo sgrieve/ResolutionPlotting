@@ -50,7 +50,7 @@ def CreatePlots():
                                CurvData[0])
 
             plt.xlabel("Grid resolution ($m$)")
-            plt.ylabel("Curvature $m^{-1}$")
+            plt.ylabel("Curvature ($m^{-1}$)")
             plt.title(h1 + ' ' + h2)
             plt.savefig(p + '_Curv_' + str(t) + '.png')
             plt.clf()
