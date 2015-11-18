@@ -1,0 +1,50 @@
+import numpy as np
+import matplotlib.pyplot as plt
+import BoxPlotter
+
+
+def LoadData(Prefix, InPath):
+    """
+    Load the data into a 2d array with the column format:
+
+    X_coord, PC2, PC25, Median, Mean, PC75, PC98, Minimum, Maximum
+    """
+
+    with open(InPath + Prefix + '_RResData.txt', 'r') as f:
+        f.readline()
+        data = f.readlines()
+
+    no_of_lines = len(data)
+    no_of_cols = len(data[0].split())
+
+    Data = np.zeros((no_of_cols, no_of_lines), dtype='float64')
+
+    for i, r in enumerate(data):
+        split = r.split()
+        for a in range(no_of_cols):
+            Data[a][i] = split[a]
+
+    return Data
+
+
+def CreatePlots():
+    """
+    Wrapper to generate hillslope length plots from a series of data files.
+    """
+
+    prefixes = ['SC', 'OR', 'GM']
+    headings1 = ['Santa Cruz Island', 'Oregon Coast Range', 'Gabilan Mesa']
+    Path = ''
+
+    for p, h1 in zip(prefixes, headings1):
+        LHData = LoadData(p, Path)
+        BoxPlotter.BoxPlot(LHData[1], LHData[2], LHData[3], LHData[4],
+                           LHData[5], LHData[6], LHData[0])
+
+        plt.xlabel("Grid resolution ($m$)")
+        plt.ylabel("Relief ($m$)")
+        plt.title(h1 + ' relief')
+        plt.savefig(p + '_R.png')
+        plt.clf()
+
+CreatePlots()
