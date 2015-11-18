@@ -10,7 +10,7 @@ def LoadData(Prefix, InPath):
     X_coord, PC2, PC25, Median, Mean, PC75, PC98, Minimum, Maximum
     """
 
-    with open(InPath + Prefix + '_LHResData_.txt', 'r') as f:
+    with open(InPath + Prefix + '_LHResData.txt', 'r') as f:
         f.readline()
         data = f.readlines()
 
