@@ -34,6 +34,7 @@ def CreatePlots():
 
     prefixes = ['SC', 'OR', 'GM']
     headings1 = ['Santa Cruz Island', 'Oregon Coast Range', 'Gabilan Mesa']
+
     Path = ''
 
     for p, h1 in zip(prefixes, headings1):
