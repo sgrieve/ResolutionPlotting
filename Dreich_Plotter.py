@@ -4,6 +4,8 @@ import matplotlib.pyplot as plt
 Resolutions = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 12, 14, 16, 18, 20, 22, 24,
                26, 28, 30, 35, 40, 45, 50, 55, 60]
 
+maxvals = [500000, 200000, 200000]
+
 location = ['Santa Cruz Island', 'Gabilan Mesa', 'Oregon Coast Range']
 prefix = ['SC', 'GM', 'OR']
 
@@ -43,4 +45,17 @@ for a in range(3):
     plt.title(location[a])
     plt.legend()
     plt.savefig(prefix[a] + '_Length.png')
+    plt.clf()
+
+    for i in range(1, 26):
+        plt.scatter(Values[0], Values[i], color=str(round((i / 26.), 3)),
+                    marker='o', edgecolor='k')
+
+    plt.ylabel('Stream length (m) from reduced resolution data')
+    plt.xlabel('Stream length (m) from 1 meter data')
+    plt.title(location[a])
+    plt.plot((0, maxvals[a]), (0, maxvals[a]), 'k--')
+    plt.xlim(xmin=0)
+    plt.ylim(ymin=0)
+    plt.savefig(prefix[a] + '_Length_Comparison.png')
     plt.clf()
