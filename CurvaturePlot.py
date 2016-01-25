@@ -1,6 +1,7 @@
 import numpy as np
 import matplotlib.pyplot as plt
 import BoxPlotter
+import string
 
 
 def LoadData(Prefix, CurvType, InPath):
@@ -36,6 +37,7 @@ def CreatePlots():
 
     prefixes = ['SC', 'OR', 'GM']
     types = range(3, 7)
+    Labels = list(string.ascii_uppercase)[:4]
     Path = ''
 
     headings1 = ['Santa Cruz Island', 'Oregon Coast Range', 'Gabilan Mesa']
@@ -43,7 +45,7 @@ def CreatePlots():
                  'Tan Curvature']
 
     for p, h1 in zip(prefixes, headings1):
-        for t, h2 in zip(types, headings2):
+        for t, h2, label in zip(types, headings2, Labels):
 
             # Load the data file
             CurvData = LoadData(p, t, Path)
@@ -64,7 +66,7 @@ def CreatePlots():
             plt.legend(loc=4, numpoints=1, fancybox=True, markerscale=2.)
 
             # Place a Subplot label
-            plt.annotate('A', xy=(0.96, 0.98), xycoords='axes fraction',
+            plt.annotate(label, xy=(0.96, 0.98), xycoords='axes fraction',
                          fontsize=16, horizontalalignment='left',
                          verticalalignment='top')
 
