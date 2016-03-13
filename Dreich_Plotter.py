@@ -11,7 +11,7 @@ prefix = ['SC', 'GM', 'OR']
 
 for a in range(3):
 
-    with open(prefix[a] + '_Dreich_Length.txt', 'r') as f:
+    with open(prefix[a] + '_P_Length.txt', 'r') as f:
         data = f.readlines()
 
     # find row with most values
@@ -44,7 +44,7 @@ for a in range(3):
     plt.ylabel('Stream length (m)')
     plt.title(location[a])
     plt.legend()
-    plt.savefig(prefix[a] + '_Length.png')
+    plt.savefig(prefix[a] + '_P_Length.png')
     plt.clf()
 
     for i in range(1, 26):
@@ -57,5 +57,11 @@ for a in range(3):
     plt.plot((0, maxvals[a]), (0, maxvals[a]), 'k--')
     plt.xlim(xmin=0)
     plt.ylim(ymin=0)
-    plt.savefig(prefix[a] + '_Length_Comparison.png')
+
+    # plt.arrow(maxvals[a]+50000,maxvals[a]+50000,maxvals[a]/2.*-1,0,
+    #            shape='full', color='k', lw=3, length_includes_head=True,
+    # plt.text(maxvals[a]-130000,maxvals[a]+70000,'Increasing Stream Order')
+    # head_width=10000)
+
+    plt.savefig(prefix[a] + '_P_Length_Comparison.png')
     plt.clf()

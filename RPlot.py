@@ -42,6 +42,16 @@ def CreatePlots():
         BoxPlotter.BoxPlot(LHData[1], LHData[2], LHData[3], LHData[4],
                            LHData[5], LHData[6], LHData[0])
 
+        # Make 2 fake points to build the legend from
+        plt.plot(0, 0, 'b-', label='Mean')
+        plt.plot(0, 0, 'r-', label='Median')
+        plt.legend(loc=4, numpoints=1, fancybox=True, markerscale=2.)
+
+        # Place a Subplot label
+        plt.annotate('B', xy=(0.96, 0.98), xycoords='axes fraction',
+                     fontsize=16, horizontalalignment='left',
+                     verticalalignment='top')
+
         plt.xlabel("Grid resolution ($m$)")
         plt.ylabel("Relief ($m$)")
         plt.title(h1 + ' relief')
